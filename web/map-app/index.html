@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Проекты</title>      
+  <link rel="stylesheet" href="./index.css" type="text/css"/>      
+</head>
+<body>
+<div class="container_body">
+    
+  <!-- Maps div -->
+  <div class="ol" id="ol"></div>      
+  
+  <!-- Loading indicator -->
+  <div id='loading-indicator'>
+    <span class="loading" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </div>
+
+  <!-- Dialogs -->
+  <div class="hidden">      
+    <div id="dialog_link" title="Связать проект">
+      <div class="container-fluid">
+        <div class='row'>
+          <div class="col-6"><label for="link_countries_search">Страна</label></div>
+          <div class="col-6"><input type="text" id="link_countries_search" class="link-countries-search" placeholder="выберите страну" /></div>
+        </div>
+        <div class='row'>
+          <div class="col-6"><label for="link_projects_search">Тип проекта</label></div>
+          <div class="col-6">
+            <select id="link_project_types_search" class="link-project-types-search">
+              <option value='' selected>-</option>
+              <option value='project'>проект</option>      
+              <option value='idea'>идея</option>
+              <option value='archive'>архивный</option>
+            </select>
+          </div>
+        </div>
+        <div class='row'>
+          <div class="col-6"><label for="link_projects_search">Проект</label></div>
+          <div class="col-6" style="display: flex"><select id="link_projects_search" class="link-projects-search">
+            <option>выберите проект</option>    
+          </select></div>
+        </div>
+        
+        <div class='row'>
+          <div class="col-6"><label for="link_project_name">Название проекта</label></div>
+          <div class="col-6"><input type="text" id="link_project_name" class="link-project-name" placeholder="название проекта" /></div>
+        </div>
+        <div class='row'>
+          <div class="col-6"><label for="link_project_marker">Маркер</label></div>
+          <div class="col-6"><label id="link_project_marker"></label></div>
+        </div>
+      </div>     
+    </div>      
+  </div>  
+  
+</div>
+
+</body>
+<script type="text/javascript" src="http://10.246.127.177:8080/geoportal-api/api.js" data-api-key="my5cca9rm8bp56wxxh"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+</html>

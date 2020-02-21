@@ -1,0 +1,275 @@
+
+h1
+{
+	margin:0; padding:0;
+	font-size:120%;
+	margin-bottom:15px;
+	padding-bottom:5px;
+	padding-top:14px;
+	border-bottom:1px solid #CCCCCC
+}
+
+h2, h3
+{
+	font-size:120%;
+}
+
+h2
+{
+	padding-top:15px;
+	padding-bottom:5px;
+	border-bottom:1px solid #CCCCCC;
+}
+
+h4, h5, h6
+{
+	font-size:110%;
+}
+
+/*Information block*/
+.information-block
+{
+	width:180px;
+	margin-bottom:16px;
+}
+
+.information-block-head
+{
+	color:#BC262C;
+	font-weight:bold;
+	font-size:85%;
+	border-bottom:1px solid #CCCCCC;
+	margin-bottom:4px;
+	padding-bottom:5px;
+}
+
+.information-block-body
+{
+	font-size:85%;
+	color:#737373;
+	margin-right:20px;
+}
+
+/*Content block*/
+.content-block
+{
+	border-top-color:#E4E4E4;
+	background:#F5F5F5;
+	margin-bottom:5px;
+	width:100%;
+}
+
+.content-block-head
+{
+	background-image:url(images/content_block_bg.gif);
+	font-weight:bold;
+	font-size:95%;
+	margin:2px;
+	padding: 5px 9px;
+}
+
+.content-block-body
+{
+	padding:4px 5px;
+	width:100%;
+}
+
+code
+{
+	font-size:100%;
+	font-weight:normal;
+	display:block;
+	padding:1.5em 1em 1em 1em;
+	border-style:solid;
+	border-width:1px;
+	border-width:1px 0;
+	margin:1em 0;
+	background-color:#F5F5F5;
+	font-family:sans-serif;
+}
+
+.redSubmitButton {
+	vertical-align: top; 
+	background: #d03a27; cursor: pointer; 
+	border: none; 
+	width: 9.375em; 
+	border-radius: 0.3125em; 
+	height: 2.8125em; 
+	color: #fff; 
+	font-size: 1em; 
+	font-family: RussianRailGRegular;
+}
+
+.inputLogin {
+	border: none; background: #fff!important; font-size: 1em; outline: none; width: 100%; font-family: FSRAIL55;
+}
+
+.input-container .form-group {
+	display: inline-block; margin: 0; width: 80%; position: relative;
+}
+
+.navbar-right {
+	margin-right: 0!important;
+}
+
+.addProjectInputName {
+	width: 67%; display: inline-block;text-align: left;box-shadow: 0 0 0.625em rgba(0,0,0,0.5); border-radius: 0.625em; padding: 0.625em; border-color: transparent;    vertical-align: middle;
+}
+
+.addProjectInput {
+	display: inline-block; text-align: left; box-shadow: 0 0 0.625em rgba(0,0,0,0.5); border-radius: 0.625em;padding: 0.625em; width: 40%; border-color: transparent;    vertical-align: middle;
+}
+
+.addProjectFormFieldTop {
+	color: #2f475b; font-family: RussianRailGRegular; font-size: 0.875em; width: 100%; outline: none; border: none;    vertical-align: middle;
+}
+
+.addProjectFormField {
+	color: #2f475b; font-family: RussianRailGRegular; font-size: 0.875em; width: 100%; outline: none; border: none;    vertical-align: middle;
+}
+
+.addProjectInputName .form-group, .addProjectInput .form-group {
+    margin-bottom: 0px; 
+}
+
+.addProjectInputName .form-group .help-block, .addProjectInput .form-group .help-block {
+    margin: 0px; 
+}
+
+.redbtn {
+	vertical-align: top; background: #d03a27; cursor: pointer; border: none; width: 9.375em; border-radius: 0.3125em; height: 2.8125em; color: #fff; font-size: 1em; font-family: RussianRailGRegular;
+}
+
+.indexSelect {
+	width: 100%; font-family: FSRAIL55; font-size: 1em; outline: none; border: none;
+}
+
+.sse input {
+	width: 550px; font-family: FSRAIL55; font-size: 1em; display: inline-block; padding: 0.625em; padding-left: 0.3125em; outline: none; border: none;
+}
+
+.asdsdads {
+	box-shadow: 0 0 0.625em rgba(0,0,0,0.5); border-radius: 0.625em; font-family: FSRAIL55; font-size: 1em; display: inline-block; outline: none; border: none; padding-left: 0.625em; height: 3.125em; 
+	text-align: center; padding-left: 0.625em; margin-block-start: 1em; margin-block-end: 1em; vertical-align: bottom;
+}
+
+.ssse .help-block-error {
+	position: absolute;
+}
+
+.ser-1 {
+	display: inline-block;font-family: FSRAIL55; font-size: 1em; cursor: pointer; color: #8bb85c!important;
+}
+
+.ser-2 {
+	display: inline-block;font-family: FSRAIL55; font-size: 1em; cursor: pointer; color: #f6cb00!important;
+}
+
+.ser-3 {
+	display: inline-block;font-family: FSRAIL55; font-size: 1em; cursor: pointer; color: #85898d!important;
+}
+
+.ser-4 {
+	display: inline-block;font-family: FSRAIL55; font-size: 1em; cursor: pointer; color: #db7235!important;
+}
+
+#statusStep .col-sm-6 {
+	float: none; width: 70%; margin: 0;    display: inline-block;
+}
+
+.addProjectFormFieldTR {
+	color: #2f475b;
+    font-family: RussianRailGRegular;
+    font-size: 0.875em;
+    width: 90%;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+}
+
+.example-5{
+		box-sizing:border-box;
+	}
+	.example-5{
+		position:relative; width: 20.125em;
+	}
+	.example-5 h2{
+		font-weight:400
+	}
+	.example-5 .filupp > input[type="button"]{
+		position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0
+	}
+	.example-5 .filupp{position:relative;padding:1em;cursor:pointer; display: inline-block;vertical-align: middle;}
+	.example-5 .filupp-file-name{display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family: FSRAIL55; font-size: 1em;}
+	
+.gresource, .gpccomplete {
+	display: none;
+}
+
+.ggroup-1 {
+    height: 7px;
+    background: #8bb85c;
+    margin-top: 2px;
+}
+
+.ggroup-2 {
+    height: 7px;
+    background: #f6cb00;
+    margin-top: 2px;
+}
+
+.ggroup-3 {
+    height: 7px;
+    background: #85898d;
+    margin-top: 2px;
+}
+
+.ggroup-4 {
+    height: 7px;
+    background: #db7235;
+    margin-top: 2px;
+}
+
+.headerInner {
+	padding-top: 1.40625em;
+	padding-left: 3.125em;
+}
+
+.search-form {
+	display: inline-block;
+}
+
+#qwert {
+	display: inline-block;
+	width: 60%;
+}
+
+.main-wrapper {
+	width: 100%;
+	padding-left: 15px;
+}
+
+#footerHalf-left {
+	position: relative;
+}
+
+.footerHalf {
+	background: url('/img/footer1.png');
+	width: 100%;
+	height: 7.9375em;
+	background-size: cover;
+}
+
+.footerHalf > div {
+	position: absolute;
+	top: 0px;
+	left: 69.6875em;
+}
+
+.footerHalf > div > p {
+	font-size: 1em;
+	color: #ffffff;
+	font-family: RussianRailGRegular;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+}

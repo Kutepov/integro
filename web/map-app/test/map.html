@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IntegroPro Projects</title>
+  <!--link rel="stylesheet" href="assets/css/style.css" /-->
+  <style>
+    .gp {    height: 500px;     width: 100%;     /*margin: 20px auto;*/    }
+    .container {    height: 100%;   width: 100%;      min-width: 1000px;   }    
+    .bar {      width: 100%;    }
+  </style>
+</head>
+<body>
+<div class="container">    
+  <div id="gp" class="gp"></div>
+  <div id="bar" class="bar">
+    <div class='b'>
+      <button id='button_A' class='a'>A</button>
+      <button id='button_B' class='a'>B</button>      
+      <br/>
+      id: <input id='input_OBJ' type='text' class='a' size='3' value='1'/>
+      <button id='button_C' class='a'>найти проект по ID</button>      
+      <button id='button_D' class='a'>найти страну по ID</button>
+      <button id='button_E' class='a'>showE</button>
+      
+      <br/>
+      <textarea id='input_AB' rows="3" cols="100"></textarea>
+      
+      <br/>
+      <button id='button_GEOMC' class='a'>получить геометрию страны</button>
+      <button id='button_GEOMP' class='a'>получить геометрию проекта</button>
+      
+      <br/>
+      <button id='button_COUNTRIES' class='a'>смотреть страны</button>
+      <button id='button_PROJECTS' class='a'>смотреть проекты</button>
+      
+    </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="http://10.246.127.177:8080/geoportal-api/api.js" data-api-key="my5cca9rm8bp56wxxh"></script>
+
+<!--script type="text/javascript" src="geoportal-api/api.js" data-api-key="my5cca9rm8bp56wxxh"></script-->
+<!--script type="text/javascript" src="geoportal-api/js.js" data-api-key="my5cca9rm8bp56wxxh"></script-->
+<!--script type="text/javascript" src="geoportal-api/styles.js" data-api-key="my5cca9rm8bp56wxxh"></script-->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="./map.js"></script>
+
+</html>

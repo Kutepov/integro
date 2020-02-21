@@ -1,0 +1,104 @@
+#loading-indicator
+  height: 100%
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  position: fixed
+  z-index: 999
+  display: none
+  background-color: rgba(125, 125, 125, 0.5)
+  
+$speed: 2s
+
+
+//display: flex
+//  background-color: #d0d0d0
+
+.loading 
+  display: block
+  margin: auto
+  position: relative
+  width: 100px
+  height: 100px
+  span 
+    display: block
+    position: absolute
+    width: 50%
+    height: 50%
+    &:nth-child(1) 
+      top: 0
+      left: 0
+      background-color: rgba( #f37321, .75)
+      animation: move1 $speed linear infinite
+    &:nth-child(2) 
+      top: 0
+      right: 0
+      background-color: rgba( #00a6d3, .75)
+      animation: move2 $speed linear infinite
+    &:nth-child(3) 
+      bottom: 0
+      left: 0
+      background-color: rgba( #e40375, .75)
+      animation: move3 $speed linear infinite
+    &:nth-child(4) 
+      bottom: 0
+      right: 0
+      background-color: rgba( #39b54a, .75)
+      animation: move4 $speed linear infinite
+
+@keyframes move1 
+  0% 
+    transform: translate( 0)
+    z-index: 10
+  25% 
+    transform: translate( 100%, 0)
+  50% 
+    transform: translate( 100%, 100%)
+  75% 
+    transform: translate( 0, 100%)
+    z-index: 0
+  100% 
+    transform: translate( 0)
+
+@keyframes move2 
+  0% 
+    transform: translate( 0)
+  25% 
+    transform: translate( 0, 100%)
+  50% 
+    transform: translate( -100%, 100%)
+    z-index: 0
+  75% 
+    transform: translate( -100%, 0)
+    z-index: 10
+  100% 
+    transform: translate( 0)
+
+@keyframes move3 
+  0% 
+    transform: translate( 0)
+  25% 
+    transform: translate( 0, -100%)
+    z-index: 10
+  50% 
+    transform: translate( 100%, -100%)
+  75% 
+    transform: translate( 100%, 0)
+  100% 
+    transform: translate( 0)
+    z-index: 0
+
+@keyframes move4 
+  0% 
+    transform: translate( 0)
+  25% 
+    transform: translate( -100%, 0)
+    z-index: 0
+  50% 
+    transform: translate( -100%, -100%)
+    z-index: 10
+  75% 
+    transform: translate( 0, -100%)
+  100% 
+    transform: translate( 0)

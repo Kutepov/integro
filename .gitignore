@@ -37,3 +37,5 @@ tests/_support/_generated
 
 #nginx config
 Nginx_1.17_vhost.conf
+
+/web/uploads
