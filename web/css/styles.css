@@ -273,3 +273,80 @@ code
 	margin-block-start: 1em;
 	margin-block-end: 1em;
 }
+
+.site-login > div {
+	height: 68vh;
+}
+
+.site-login > div > div {
+	width: 30%;
+	margin: auto;
+	vertical-align: middle;
+	padding-top: 4%;
+}
+
+#sdf > div {
+	padding: 1.875em;
+	text-align: center;
+	box-shadow: 0 0 0.625em rgba(0,0,0,0.5);
+	border-radius: 0.625em;
+	width: 26.875em;
+	margin: auto;
+	margin-bottom: 20%;
+}
+
+.login-empty-div {
+	text-align: left;
+	padding-bottom: 0.875em;
+	margin-bottom: 0px;
+}
+
+.login-title {
+	font-size: 1.375em;
+	font-family: RussianRailGRegular;
+	color: #2f475b;
+}
+
+.login-tip {
+	font-size: 0.875em;
+	color: #6c7985;
+	font-family: FSRAIL55;
+	margin-bottom: 0px;
+	padding-bottom: 0.875em;
+}
+
+.login-error {
+	position: absolute;
+	top: 2em;
+	width: 100%;
+}
+
+.login-wrapper-username {
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.09);
+	border-radius: 0.625em;
+	height: 2.8125em;
+	margin-bottom: 1.625em;
+}
+
+.login-wrapper-username > i {
+	margin-top: 0.8125em;
+	color: #2f475b;
+	font-size: 1em;
+}
+
+.login-wrapper-password {
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.09);
+	border-radius: 0.625em;
+	height: 2.8125em;
+	margin-bottom: 3.625em;
+}
+
+.login-wrapper-password > i {
+	margin-top: 0.8125em;
+	color: #2f475b;
+	font-size: 1em;
+}
+
+.login-submit-button {
+	margin-top: 20%;
+}

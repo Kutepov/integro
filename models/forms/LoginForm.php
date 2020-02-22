@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
+namespace app\models\forms;
 
+use app\models\User;
 use Yii;
 use yii\base\Model;
 
@@ -15,7 +16,6 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
-    public $rememberMe = true;
 
     private $_user = false;
 
@@ -27,9 +27,7 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
+            [['username', 'password'], 'required', 'message' => 'Поле не может быть пустым'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
@@ -47,8 +45,20 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
+            if ($user->ip && $user->ip != $_SERVER['REMOTE_ADDR']) {
+                $this->addError($attribute, 'Доступ ограничен на основании IP-адреса. '.$user->ip.' != '.$_SERVER['REMOTE_ADDR']);
+            }
+
+            if ($user->deactivation_at && $user->deactivation_at < time()) {
+                $this->addError(
+                    $attribute,
+                    'Ваша учетная запись не активна в связи с окончанием периода активности учетной записи.
+                          Для восстановления необходимо оформить заявку.'
+                );
+            }
+
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Неверный логин или пароль.');
             }
         }
     }
@@ -60,7 +70,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            return Yii::$app->user->login($this->getUser(), 3600*24*30);
         }
         return false;
     }

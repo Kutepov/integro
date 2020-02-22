@@ -5,6 +5,5 @@ return [
     'dsn' => 'pgsql:host=localhost;dbname=integro',
     'username' => 'postgres',
     'password' => '',
-    'charset' => 'utf8',
-    'tablePrefix' => 'abc_'
+    'charset' => 'utf8'
 ];

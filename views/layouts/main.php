@@ -32,13 +32,15 @@ AppAsset::register($this);
         <div id="header_text">
             <span>Зарубежные проекты</span>
         </div>
-        <form action="/search" method="get" class="search-form example-5">
-            <input type="text" id="qwert" name="r" value="" size="15" maxlength="50" class="form-control" />
-            <label for="s" class="filupp">
-                <span class="filupp-file-name js-value"> Поиск</span>
-                <input id="s" type="button" onclick="getSearch();" value="Поиск">
-            </label>
-        </form>
+        <?php if (!Yii::$app->user->isGuest): ?>
+            <form action="/search" method="get" class="search-form example-5">
+                <input type="text" id="qwert" name="r" value="" size="15" maxlength="50" class="form-control" />
+                <label for="s" class="filupp">
+                    <span class="filupp-file-name js-value"> Поиск</span>
+                    <input id="s" type="button" onclick="getSearch();" value="Поиск">
+                </label>
+            </form>
+        <?php endif; ?>
 
         <?=  Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
