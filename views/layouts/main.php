@@ -74,7 +74,7 @@ AppAsset::register($this);
 <footer >
     <div id="footerHalf-left" >
         <div class="footerHalf">
-            <div style="">
+            <div>
                 <p>Интерактивная карта зарубежных проектов «РЖД»</p>
             </div>
         </div>
