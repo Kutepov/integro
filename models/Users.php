@@ -26,7 +26,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $name_department
  * @property int|null $status
  */
-class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
