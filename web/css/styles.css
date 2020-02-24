@@ -196,9 +196,6 @@ code
 	.example-5 h2{
 		font-weight:400
 	}
-	.example-5 .filupp > input[type="button"]{
-		position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0
-	}
 	.example-5 .filupp{position:relative;padding:1em;cursor:pointer; display: inline-block;vertical-align: middle;}
 	.example-5 .filupp-file-name{display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family: FSRAIL55; font-size: 1em;}
 	
@@ -247,6 +244,7 @@ code
 .main-wrapper {
 	width: 100%;
 	padding-left: 15px;
+	padding-top: 20px;
 }
 
 #footerHalf-left {
@@ -260,7 +258,7 @@ code
 	background-size: cover;
 }
 
-.footerHalf > div {
+.footerHalf > .footer-text {
 	position: absolute;
 	top: 0px;
 	left: 58%;
@@ -349,4 +347,63 @@ code
 
 .login-submit-button {
 	margin-top: 20%;
+}
+
+.footer-control-button {
+	position: absolute;
+	top: 0;
+}
+
+.fbc-first {
+	left: 46%;
+}
+
+.fbc-second {
+	left: 35%;
+}
+
+.footer-control-button > a > p {
+	font-size: 1em;
+	color: #2f475b;
+	font-family: RussianRailGRegular;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+}
+
+.footer-control-button > a > p > span {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#list-projects {
+	width: 40%;
+	margin: auto;
+	height: 67.5vh;
+	overflow-y: scroll;
+	margin-top: 70px;
+	margin-bottom: 20px;
+}
+
+.button-go-to-project {
+	vertical-align: top;
+	background: #d03a27;
+	cursor: pointer;
+	border: none;
+	width: 12.375em;
+	border-radius: 0.3125em;
+	height: 2.8125em;
+	color: #fff;
+	font-size: 1em;
+	font-family: RussianRailGRegular;
+}
+
+#s {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }

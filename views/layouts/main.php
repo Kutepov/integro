@@ -37,7 +37,7 @@ AppAsset::register($this);
                 <input type="text" id="qwert" name="r" value="" size="15" maxlength="50" class="form-control" />
                 <label for="s" class="filupp">
                     <span class="filupp-file-name js-value"> Поиск</span>
-                    <input id="s" type="button" onclick="getSearch();" value="Поиск">
+                    <input id="s" type="submit" value="Поиск">
                 </label>
             </form>
         <?php endif; ?>
@@ -74,13 +74,15 @@ AppAsset::register($this);
 <footer >
     <div id="footerHalf-left" >
         <div class="footerHalf">
-            <div>
+            <?php if (isset($this->blocks['control_buttons_page'])): ?>
+                <?= $this->blocks['control_buttons_page'] ?>
+            <?php endif; ?>
+            <div class="footer-text">
                 <p>Интерактивная карта зарубежных проектов «РЖД»</p>
             </div>
         </div>
     </div>
 </footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

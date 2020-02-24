@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ProjectsSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,7 +10,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\forms\LoginForm;
 
-class SiteController extends Controller
+class ProjectController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -19,37 +20,12 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['index', 'login', 'logout'],
                 'rules' => [
                     [
-                        'actions' => ['login'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['index', 'logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
             ]
         ];
     }
@@ -61,7 +37,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new ProjectsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', compact('dataProvider'));
     }
 
     /**

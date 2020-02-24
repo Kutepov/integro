@@ -70,7 +70,7 @@ class Projects extends \yii\db\ActiveRecord
             'description' => 'Описание проекта (максимум 2000 символов)',
             'linked_guid' => 'Linked Guid',
             'linked_id' => 'Linked ID',
-            'type_id' => 'Вид проекта',
+            'type_id' => 'Тип проекта',
             'country_id' => 'Страна',
             'manager_id' => 'Проектный менеджер',
             'ceo_id' => 'Руководитель',
