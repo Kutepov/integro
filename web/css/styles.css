@@ -407,3 +407,178 @@ code
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 }
+
+.project-menu-wrapper {
+	width: 22%;
+	background-color: #f9f9f9;
+	color: #2f475b;
+	display: inline-block;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.project-menu-title-section {
+	font-family: FSRAIL75;
+	font-size: 1.125em;
+	color: #2f475b;
+}
+
+.project-menu-item {
+	text-decoration: none;
+}
+
+.project-menu-item:hover {
+	text-decoration: none;
+}
+
+.project-menu-item > p {
+	font-family: FSRAIL55; font-size: 1em;
+}
+
+.project-description-wrapper {
+	width: 77%;
+	color: #2f475b;
+	display: inline-block;
+	vertical-align: top;
+	min-height: 73vh;
+}
+.project-description-wrapper > div {
+	width: 100%;
+	padding-left: 5%;
+	margin: auto;
+}
+
+#TemplatesR > div {
+	width: 100%;
+	margin: auto;
+}
+
+.project-country-type {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	vertical-align: top;
+}
+
+.project-country-flag {
+	width: 1.4375em;
+	height: 0.9375em;
+	display: inline-block;
+	background-size: 1.4375em 0.9375em !important;
+	background-repeat: no-repeat !important;
+	vertical-align: middle;
+}
+
+.project-country-name {
+	font-size: 1em;
+	display: inline-block;
+	text-transform: capitalize;
+}
+
+.project-type-name {
+	font-size: 0.875em;
+	color: #8bb85c;
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.project-full-name {
+	color: #2f475b;
+	font-family: RussianRailGRegular;
+	font-size: 1.375em;
+}
+
+.project-field-title {
+	display: inline-block;
+	width: 10em;
+}
+
+.project-field-title > p {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 0.875em;
+	display: inline-block;
+	width: 10em;
+}
+
+.project-field-value {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 0.875em;
+	display: inline-block;
+}
+
+.project-create-title {
+	color: #2f475b;
+	font-family: FSRAIL75;
+	font-size: 1.125em;
+}
+
+#cForm {
+	width: 40%;
+	margin: 40px auto;
+}
+
+.project-create-label-wrapper {
+	display: inline-block;
+	width: 12em;
+}
+
+.project-create-label-wrapper > p {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 0.875em;
+	vertical-align: middle;
+}
+
+.project-create-item-wrapper {
+	margin-bottom: 20px;
+}
+
+.project-create-short-field {
+	width: 40%;
+}
+
+.custom-combobox {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+.custom-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+}
+.custom-combobox-input {
+	margin: 0;
+	padding: 5px 10px;
+}
+
+.ui-autocomplete-input {
+	width: 90%;
+	border: none!important;
+	background: none;
+	outline: none;
+}
+
+.ui-button {
+	border: none!important;
+	outline: none;
+	background: none;
+}
+#addprojectform-agreement {
+	text-transform: none;
+}
+
+.project-create-textarea-wrapper {
+	margin-bottom: 0.625em;
+	margin-top: 1em;
+}
+.project-create-textarea-wrapper > p {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 0.875em;
+	display: inline-block;
+	width: 10em;
+}

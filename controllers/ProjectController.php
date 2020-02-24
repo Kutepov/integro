@@ -2,16 +2,19 @@
 
 namespace app\controllers;
 
+use app\models\Projects;
 use app\models\ProjectsSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\forms\LoginForm;
 
 class ProjectController extends Controller
 {
+    public $layout = 'project';
     /**
      * {@inheritdoc}
      */
@@ -31,49 +34,37 @@ class ProjectController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
      * @return string
      */
     public function actionIndex()
     {
+        $this->layout = 'main';
         $searchModel = new ProjectsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', compact('dataProvider'));
     }
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
+    public function actionCreate()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        $this->layout = 'main';
+        $model = new Projects();
+        return $this->render('create2', compact('model'));
     }
 
     /**
-     * Logout action.
-     *
-     * @return Response
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
      */
-    public function actionLogout()
+    public function actionView($id)
     {
-        Yii::$app->user->logout();
+        $model = Projects::findOne($id);
 
-        return $this->goHome();
+        if (!$model) {
+            throw new NotFoundHttpException('Проект не найден');
+        }
+
+        return $this->render('view', compact('model'));
     }
 }

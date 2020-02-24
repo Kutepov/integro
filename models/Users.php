@@ -25,6 +25,8 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $pass_change_at
  * @property string|null $name_department
  * @property int|null $status
+ * @property UsersRoles $role
+ * @property int|null $role_id
  */
 class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -54,7 +56,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['username', 'password', 'email', 'num_oz', 'name_department'], 'required'],
             [['created_at', 'updated_at', 'deactivation_at', 'pass_change_at', 'status'], 'default', 'value' => null],
-            [['created_at', 'updated_at', 'deactivation_at', 'pass_change_at', 'status'], 'integer'],
+            [['created_at', 'updated_at', 'deactivation_at', 'pass_change_at', 'status', 'role_id'], 'integer'],
             [['username', 'email', 'password', 'full_name', 'ip', 'num_oz', 'name_department'], 'string', 'max' => 255],
             [['job_position', 'access_token'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 30],
@@ -155,5 +157,15 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function setPassword($password)
     {
         $this->password = Yii::$app->security->generatePasswordHash($password);
+    }
+
+    /**
+     * Gets query for [[UsersRoles]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole()
+    {
+        return $this->hasMany(UsersRoles::class, ['role_id' => 'id']);
     }
 }

@@ -24,8 +24,15 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <?= $this->renderPhpFile(__DIR__.DIRECTORY_SEPARATOR.'_header.php'); ?>
 <div class="container main-wrapper">
-    <?= Alert::widget() ?>
-    <?= $content ?>
+    <div style="width: 63%; margin: auto;">
+        <div style="width: 100%; margin: auto;">
+            <?= Alert::widget() ?>
+            <?= $this->renderPhpFile(__DIR__.DIRECTORY_SEPARATOR.'_project_menu.php'); ?>
+            <div style="width: 77%; color: #2f475b; display: inline-block; vertical-align: top; min-height: 73vh;">
+                <?= $content ?>
+            </div>
+        </div>
+    </div>
 </div>
 <?= $this->renderPhpFile(__DIR__.DIRECTORY_SEPARATOR.'_footer.php'); ?>
 <?php $this->endBody() ?>

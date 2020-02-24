@@ -1,0 +1,189 @@
+div.boxItem {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1em;
+    margin-right: 5em;
+    position:relative
+}
+
+.boxItem:before, .boxItem:after {
+    content:'';
+    width:5em;/* size of your margin */
+    border-bottom:1px solid;
+    position:absolute;
+    top:50%;
+
+}
+:after {
+    left:100%;
+}
+:before {
+    right:100%;
+}
+.boxItem:first-of-type:before, .boxItem:last-of-type:after {
+    display:none;
+}
+.myBox {
+    white-space:nowrap;
+    /*text-align:center;*/
+}
+
+#outer-circle {
+    position:relative;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#inner-circle {
+    position:absolute;
+    background: #8bb85c;
+    border-radius: 50%;
+    right: 30%;
+    left: 30%;
+    top: 30%;
+    bottom: 30%;
+    cursor: pointer;
+    /* no margin, no width, they get automatically calculated*/
+}
+
+.circle-s {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+.circle-m {
+    width: 1.875em;
+    height: 1.875em;
+}
+
+.circle-m #inner-circle {
+    border-radius: 50%;
+    right: 20%;
+    left: 20%;
+    top: 20%;
+    bottom: 20%;
+}
+
+.arcticmodal-overlay {
+    opacity: 0!important;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+.input-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+    padding: 10px;
+    min-width: 1.25em;
+    padding-right: 0;
+    text-align: center;
+}
+
+
+.example-3{
+    box-sizing:border-box;
+}
+.example-3{
+    position:relative; width: 3.125em;
+}
+.example-3 h2{
+    font-weight:400
+}
+.example-3 .filupp > input[type="file"]{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0
+}
+.example-3 .filupp{position:relative;display:block;padding:1em;cursor:pointer;}
+.example-3 .filupp-file-name{display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal}
+
+.dstp {
+    display: none;
+}
+
+.fa-trash, .fa-download {
+    padding-left: 1.25em;
+    color: #2f475b;
+    opacity: 0.2;
+}
+
+/*.elMot::-webkit-scrollbar { width: 0 ! important }*/
+
+.elMot {
+    height: 37.5em;
+    overflow: scroll;
+    overflow-y: hidden;
+    margin-bottom: 1.25em;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+    background-color: #fff!important;
+    border: none!important;
+    cursor: default;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff!important;
+    border: none!important;
+    outline: none;
+}
+
+.custom-fa input[type="checkbox"] {
+    position:absolute;left:-999px;
+}
+.custom-fa input[type="checkbox"]:focus {
+    color:#46c0ef;
+}
+.custom-fa label{
+    cursor: pointer;
+}
+.custom-fa label input[type="checkbox"] + span:before {
+    font-family: FontAwesome;
+    content: "\f096";
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+    text-align:center;
+    letter-spacing: 6px;
+}
+.custom-fa label input[type="checkbox"]:checked + span:before {
+    content: "\f046";
+    letter-spacing: 3px;
+    /*color:#fff;*/
+
+} /* checked icon */
+.custom-fa label input[type="checkbox"]:indeterminate + span:before{
+    content: "\f147";letter-spacing: 6px;
+}
+
+.nameStep-flexdatalist {
+    width: 34.375em; font-family: FSRAIL55; font-size: 1em; display: inline-block; padding: 0.625em; padding-left: 0.3125em; outline: none; border: none; border-radius: 0.625em;
+}
+
+.flexdatalist-results, .flexdatalist-results li {
+    border: none;
+}
+
+.deletedFile {
+    display: none;
+}
+
+.arcticmodal-container td {
+    padding-top: 0px;
+    display: block;
+}
+
+.arcticmodal-container {
+    position: absolute; margin: 0;    overflow: hidden;     height: 100%;
+}
+
+.arcticmodal-container_i {
+    margin: 0;    overflow: hidden;
+}

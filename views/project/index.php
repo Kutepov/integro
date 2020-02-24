@@ -16,7 +16,10 @@ echo \yii\grid\GridView::widget([
     'columns' => [
         [
             'attribute' => 'country_id',
-            'value' => 'country'
+            'value' => function ($model) {
+                /** @var \app\models\Projects $model */
+                return $model->country->name;
+            }
         ],
         [
             'attribute' => 'name',
@@ -24,7 +27,10 @@ echo \yii\grid\GridView::widget([
         ],
         [
             'attribute' => 'type_id',
-            'value' => 'type'
+            'value' => function ($model) {
+                /** @var \app\models\Projects $model */
+                return $model->type->name;
+            }
         ],
         [
             'format' => 'raw',
