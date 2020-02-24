@@ -132,7 +132,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     /**
      * @param $username
-     * @return User|null
+     * @return Users|null
      */
     public static function findByUsername($username)
     {
