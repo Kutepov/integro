@@ -54,7 +54,7 @@ $this->beginBlock('control_buttons_page'); ?>
 
 <?php
 //Изображения для футера с кнопкой
-$this->registerCss('.footerHalf {background: url("/uploads/footer2.png");}');
+$this->registerJs('$(".footerHalf").addClass("footerHalf2")');
 
 $this->endBlock();
 ?>

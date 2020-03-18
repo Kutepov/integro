@@ -258,6 +258,13 @@ code
 	background-size: cover;
 }
 
+.footerHalf2 {
+	background: url('/img/footer2.png');
+	width: 100%;
+	height: 7.9375em;
+	background-size: cover;
+}
+
 .footerHalf > .footer-text {
 	position: absolute;
 	top: 0px;
