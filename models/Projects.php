@@ -27,7 +27,7 @@ use yii\helpers\Url;
  * @property ProjectsTypes $type
  * @property Users $manager
  * @property Users $ceo
- * @property ProjectsCustomFields[] $projectsCustomFields
+ * @property ProjectsCustomFields[] $customFields
  */
 class Projects extends \yii\db\ActiveRecord
 {
@@ -47,14 +47,15 @@ class Projects extends \yii\db\ActiveRecord
         return [
             [['begin_at', 'end_at', 'linked_id', 'type_id', 'country_id', 'manager_id', 'ceo_id', 'agreement_id'], 'default', 'value' => null],
             [['linked_id', 'type_id', 'country_id', 'manager_id', 'ceo_id', 'agreement_id'], 'integer'],
-            [['description'], 'string', 'max' => 2000],
-            [['begin_at', 'end_at', 'name', 'full_name', 'linked_guid'], 'string', 'max' => 255],
+            [['begin_at', 'end_at', 'description'], 'string', 'max' => 2000],
+            [['name', 'full_name', 'linked_guid'], 'string', 'max' => 255],
             [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Countries::class, 'targetAttribute' => ['country_id' => 'id']],
             [['agreement_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProjectsAgreements::class, 'targetAttribute' => ['agreement_id' => 'id']],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProjectsTypes::class, 'targetAttribute' => ['type_id' => 'id']],
             [['manager_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['manager_id' => 'id']],
             [['ceo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['ceo_id' => 'id']],
-            [['full_name', 'type_id', 'country_id', 'name', 'begin_at', 'end_at', 'ceo_id'], 'required', 'message' => 'Поле не может быть пустым']
+            [['full_name', 'type_id', 'country_id', 'name', 'begin_at', 'end_at'], 'required', 'message' => 'Поле не может быть пустым'],
+            //[['begin_at', 'end_at'], 'safe']
         ];
     }
 
@@ -222,6 +223,9 @@ class Projects extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function afterFind()
     {
         parent::afterFind();
@@ -229,10 +233,13 @@ class Projects extends \yii\db\ActiveRecord
         $this->end_at = date('d.m.Y', $this->end_at);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function beforeValidate()
     {
-        $this->begin_at = strtotime($this->begin_at);
-        $this->end_at = strtotime($this->end_at);
+        $this->begin_at = (string)strtotime($this->begin_at)?: $this->begin_at;
+        $this->end_at = (string)strtotime($this->end_at)?: $this->end_at;
         return parent::beforeValidate();
     }
 }

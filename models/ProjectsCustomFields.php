@@ -51,6 +51,15 @@ class ProjectsCustomFields extends \yii\db\ActiveRecord
     }
 
     /**
+     * @param $projectId
+     * @return int
+     */
+    public static function clearByProject($projectId)
+    {
+        return self::deleteAll(['project_id' => $projectId]);
+    }
+
+    /**
      * Gets query for [[Project]].
      *
      * @return \yii\db\ActiveQuery

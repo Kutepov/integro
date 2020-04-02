@@ -4,7 +4,6 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -24,13 +23,11 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <?= $this->renderPhpFile(__DIR__.DIRECTORY_SEPARATOR.'_header.php'); ?>
 <div class="container main-wrapper">
-    <div style="width: 63%; margin: auto;">
-        <div style="width: 100%; margin: auto;">
-            <?= Alert::widget() ?>
-            <?= $this->renderPhpFile(__DIR__.DIRECTORY_SEPARATOR.'_project_menu.php'); ?>
-            <div style="width: 77%; color: #2f475b; display: inline-block; vertical-align: top; min-height: 73vh;">
-                <?= $content ?>
-            </div>
+    <div class="project-wrapper">
+        <?= Alert::widget() ?>
+        <?= $this->renderPhpFile(__DIR__.DIRECTORY_SEPARATOR.'_project_menu.php'); ?>
+        <div class="project-content-wrapper">
+            <?= $content ?>
         </div>
     </div>
 </div>

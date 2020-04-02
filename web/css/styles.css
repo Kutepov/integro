@@ -541,6 +541,31 @@ code
 	margin-bottom: 20px;
 }
 
+.project-create-item-wrapper__select2 .select2-selection {
+	box-shadow: none;
+	background-color: inherit;
+	border: none;
+	font-family: RussianRailGRegular;
+	color: #2f475b;
+}
+
+.project-create-item-wrapper__select2 .select2-selection__placeholder {
+	color: #2f475b !important;
+}
+
+.project-create-item-wrapper__select2 .select2-selection__arrow {
+	border: none !important;
+}
+
+.project-create-item-wrapper__select2 .select2-container--krajee.select2-container--open .select2-selection, .select2-container--krajee .select2-selection:focus {
+	box-shadow: none;
+}
+
+.project-create-item-wrapper__select2 .select2-container--krajee .select2-selection--single .select2-selection__clear {
+	right: 1.3rem;
+	top: 0.2rem;
+}
+
 .project-create-short-field {
 	width: 40%;
 }
@@ -588,4 +613,71 @@ code
 	font-size: 0.875em;
 	display: inline-block;
 	width: 10em;
+}
+
+.project-form-back {
+	margin-left: 1.875em;
+	vertical-align: top;
+	background: #fff;
+	cursor: pointer;
+	border: solid 0.0625em #d03a27;
+	width: 9.375em;
+	border-radius: 0.3125em;
+	height: 2.8125em;
+	color: #2f475b;
+	font-size: 1em;
+	font-family: RussianRailGRegular;
+}
+
+.main-wrapper > .project-wrapper {
+	width: 63%;
+	margin: auto;
+}
+
+.project-wrapper > .project-content-wrapper {
+	width: 77%;
+	color: #2f475b;
+	display: inline-block;
+	vertical-align: top;
+	min-height: 73vh;
+}
+
+.project-create-custom-field-name-wrapper {
+	width: 12em;
+
+}
+
+.project-create-custom-field-name-wrapper .project-create-custom-field-name  {
+	border: none;
+	box-shadow: none;
+	border-radius: 0px;
+	padding-left: 0;
+	height: 50px;
+}
+
+.project-create-custom-field-value  {
+	box-shadow: 0 0 0.625em rgba(0,0,0,0.5);
+	border-radius: 0.625em;
+	height: 50px;
+	margin-bottom: 12px;
+	font-family: FSRAIL75;
+	font-size: 0.875em;
+}
+
+.project-create-custom-field-value:focus  {
+	border: none;
+	box-shadow: 0 0 0.625em rgba(0,0,0,0.5);
+}
+
+.project-create-custom-btn {
+	padding-top: 11px;
+}
+
+.project-create-custom-btn:hover {
+	color: white;
+}
+
+#project-update-form-wrapper {
+	width: 80%;
+	margin-left: 20px;
 }

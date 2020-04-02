@@ -50,7 +50,6 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '<controller>/<id:\d+>' => '<controller>/view',
-                '<controller:(project)>/<id:\d+>/<action>/<country_id:\d+>' => '<controller>/<action>',
                 '<controller>/<id:\d+>/<action>' => '<controller>/<action>',
                 '<controller:(project)>s' => '<controller>/index',
                 '<action:\w+>' => 'site/<action>',

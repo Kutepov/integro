@@ -7,11 +7,15 @@
 use yii\helpers\ArrayHelper;
 use app\models\ProjectsTypes;
 use app\models\Countries;
-use yii\jui\DatePicker;
+use \dosamigos\datepicker\DatePicker;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use app\models\Users;
+use unclead\multipleinput\MultipleInput;
+
+$this->registerCss('.select2-container--krajee .select2-dropdown {margin-top: 11px;}');
 
 $form = \yii\widgets\ActiveForm::begin();
-
-$this->registerJsFile('/js/project-create-form.js', ['position' => \yii\web\View::POS_END]);
 ?>
 
 <div class="project-create-item-wrapper">
@@ -35,19 +39,18 @@ $this->registerJsFile('/js/project-create-form.js', ['position' => \yii\web\View
     </div>
 </div>
 
-<div class="project-create-item-wrapper">
-    <div class="project-create-label-wrapper"><p><?= $model->getAttributeLabel('country_id') ?></p></div>
-    <div class="addProjectInputName project-create-short-field">
-        <?= $form->field($model, 'country_id')
-            ->dropDownList(
-                ArrayHelper::map(Countries::find()->all(), 'id', 'name'),
-                [
-                    'class' => 'addProjectFormField',
-                    'prompt' => 'Выберите страну'
-                ])
-            ->label(false) ?>
+    <div class="project-create-item-wrapper project-create-item-wrapper__select2">
+        <div class="project-create-label-wrapper"><p><?= $model->getAttributeLabel('country_id') ?></p></div>
+        <div class="addProjectInputName project-create-short-field">
+            <?= $form->field($model, 'country_id')->widget(\kartik\select2\Select2::class, [
+                'data' => ArrayHelper::map(Countries::find()->all(), 'id', 'name'),
+                'options' => ['placeholder' => 'Выберите страну', 'class' => 'custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input'],
+                'pluginOptions' => [
+                    'allowClear' => false
+                ],
+            ])->label(false); ?>
+        </div>
     </div>
-</div>
 
 <div class="project-create-item-wrapper">
     <div class="project-create-label-wrapper"><p><?= $model->getAttributeLabel('name') ?></p></div>
@@ -63,9 +66,10 @@ $this->registerJsFile('/js/project-create-form.js', ['position' => \yii\web\View
             ->widget(DatePicker::class,
                 [
                     'language' => 'ru',
-                    'dateFormat' => 'dd.MM.yyyy',
-                    'options' => ['class' => 'addProjectFormField'],
-                    'clientOptions' => ['changeMonth' => true, 'changeYear' => true,]
+                    'addon' => false,
+                    'options' => ['class' => 'addProjectFormField', 'style' => 'box-shadow: none;'],
+                    'template' => '{input}',
+                    'clientOptions' => ['changeMonth' => true, 'changeYear' => true, 'format' => 'dd.mm.yyyy']
                 ]
             )->label(false); ?>
     </div>
@@ -78,48 +82,40 @@ $this->registerJsFile('/js/project-create-form.js', ['position' => \yii\web\View
             ->widget(DatePicker::class,
                 [
                     'language' => 'ru',
-                    'dateFormat' => 'dd.MM.yyyy',
-                    'options' => ['class' => 'addProjectFormField'],
-                    'clientOptions' => ['changeMonth' => true, 'changeYear' => true,]
+                    'addon' => false,
+                    'options' => ['class' => 'addProjectFormField', 'style' => 'box-shadow: none;'],
+                    'template' => '{input}',
+                    'clientOptions' => ['changeMonth' => true, 'changeYear' => true, 'format' => 'dd.mm.yyyy']
                 ]
             )->label(false); ?>
     </div>
 </div>
 
-<div class="project-create-item-wrapper">
+<div class="project-create-item-wrapper project-create-item-wrapper__select2">
     <div class="project-create-label-wrapper"><p><?= $model->getAttributeLabel('ceo_id') ?></p></div>
-    <div class="addProjectInput"> <?php
-        echo $form->field($model, 'ceo_id')->hiddenInput()->label(false); ?>
-        <div class="ui-widget">
-            <select id="selCEO" class="combobox" onchange="setCEO();">
-                <?php foreach (\app\models\Users::findAll(['role_id' => 4]) as $user):
-                    $selected = $model->ceo_id == $user->id ? 'selected' : '';
-                ?>
-                    <option value=""></option>
-                    <?= '<option "'.$selected.'" value="'.$user->id.'">'.$user->full_name.'</option>' ?>
-                <?php endforeach; ?>
-            </select>
-        </div>
+    <div class="addProjectInputName project-create-short-field">
+        <?= $form->field($model, 'ceo_id')->widget(\kartik\select2\Select2::class, [
+            'data' => ArrayHelper::map(Users::findAll(['role_id' => 4]), 'id', 'full_name'),
+            'options' => ['placeholder' => 'Выберите руководителя', 'class' => 'custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ])->label(false); ?>
     </div>
 </div>
 
-<div class="project-create-item-wrapper">
+<div class="project-create-item-wrapper project-create-item-wrapper__select2">
     <div class="project-create-label-wrapper"><p><?= $model->getAttributeLabel('manager_id') ?></p></div>
-    <div class="addProjectInput"> <?php
-        echo $form->field($model, 'manager_id')->hiddenInput()->label(false); ?>
-        <div class="ui-widget">
-            <select id="selManager" class="combobox" onchange="setManager();">
-                <?php foreach (\app\models\Users::findAll(['role_id' => 2]) as $user):
-                    $selected = $model->manager_id == $user->id ? 'selected' : '';
-                    ?>
-                    <option value=""></option>
-                    <?= '<option "'.$selected.'" value="'.$user->id.'">'.$user->full_name.'</option>' ?>
-                <?php endforeach; ?>
-            </select>
-        </div>
+    <div class="addProjectInputName project-create-short-field">
+        <?= $form->field($model, 'manager_id')->widget(\kartik\select2\Select2::class, [
+            'data' => ArrayHelper::map(Users::findAll(['role_id' => 2]), 'id', 'full_name'),
+            'options' => ['placeholder' => 'Выберите менеджера', 'class' => 'custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ])->label(false); ?>
     </div>
 </div>
-
 
 <div class="project-create-item-wrapper">
     <div class="project-create-label-wrapper"><p><?= $model->getAttributeLabel('agreement_id') ?></p></div>
@@ -136,11 +132,52 @@ $this->registerJsFile('/js/project-create-form.js', ['position' => \yii\web\View
 </div>
 
 
+<?= $form->field($model, 'customFields')->widget(MultipleInput::className(), [
+    'addButtonPosition' => MultipleInput::POS_FOOTER,
+    'allowEmptyList'    => true,
+    'addButtonOptions' => [
+        'class' => 'btn redbtn project-create-custom-btn',
+        'label' => 'Добавить поле'
+    ],
+    'removeButtonOptions' => [
+        'class' => 'btn redbtn project-create-custom-btn',
+        'label' => 'Удалить поле'
+    ],
+    'columns' => [
+        [
+            'name' => 'name',
+            'title' => '',
+            'options' => [
+                'required' => 'required',
+                'placeholder' => 'Название поля',
+                'class' => 'project-create-custom-field-name'
+            ],
+            'columnOptions' => [
+                    'class' => 'project-create-custom-field-name-wrapper'
+            ],
+        ],
+        [
+            'name' => 'value',
+            'title' => '',
+            'options' => [
+                'required' => 'required',
+                'class' => 'project-create-custom-field-value'
+            ]
+        ]
+    ]
+])
+    ->label(false);
+?>
+
 <div class="project-create-textarea-wrapper">
     <p><?= $model->getAttributeLabel('description') ?> (максимум 2000 символов)</p><div class="form-group field-addprojectform-description">
         <?= $form->field($model, 'description')->textarea(['rows' => 6])->label(false) ?>
         <p class="help-block help-block-error"></p>
     </div>
 </div>
+
+
+<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', ['class' => 'redbtn']) ?>
+<?= Html::a(Html::button('Назад', ['class' => 'project-form-back']), Url::to('/')) ?>
 
 <?php \yii\widgets\ActiveForm::end(); ?>

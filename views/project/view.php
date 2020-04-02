@@ -4,6 +4,8 @@
  * @var $model \app\models\Projects
  */
 
+use yii\helpers\Url;
+
 $this->title = 'Описание проекта';
 
 $this->registerCssFile('/css/project/description.css');
@@ -26,11 +28,11 @@ $this->registerCssFile('/css/project/description.css');
                 </div>
                 <div>
                     <div class="project-field-title"><p><?= $model->getAttributeLabel('begin_at') ?></p></div>
-                    <p class="project-field-value"><?= date('d.m.Y', $model->begin_at) ?></p>
+                    <p class="project-field-value"><?= $model->begin_at ?></p>
                 </div>
                 <div>
                     <div class="project-field-title"><p><?= $model->getAttributeLabel('end_at') ?></p></div>
-                    <p class="project-field-value"><?= date('d.m.Y', $model->end_at) ?></p>
+                    <p class="project-field-value"><?= $model->end_at ?></p>
                 </div>
                 <div>
                     <div class="project-field-title"><p><?= $model->getAttributeLabel('ceo_id') ?></p></div>
@@ -44,10 +46,6 @@ $this->registerCssFile('/css/project/description.css');
                     <div class="project-field-title"><p><?= $model->getAttributeLabel('agreement_id') ?></p></div>
                     <p class="project-field-value"><?= $model->agreement->name ?></p>
                 </div>
-                <div>
-                    <div class="project-field-title"><p><?= $model->getAttributeLabel('description') ?></p></div>
-                    <p class="project-field-value"><?= $model->description ?></p>
-                </div>
 
                 <?php foreach ($model->customFields as $field):
                     /** @var $field \app\models\ProjectsCustomFields */ ?>
@@ -56,7 +54,26 @@ $this->registerCssFile('/css/project/description.css');
                         <p class="project-field-value"><?= $field->value ?></p>
                     </div>
                 <?php endforeach; ?>
+
+                <div>
+                    <div class="project-field-title"><p><?= $model->getAttributeLabel('description') ?></p></div>
+                    <p class="project-field-value"><?= $model->description ?></p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<?php $this->beginBlock('control_buttons_page'); ?>
+    <div class="footer-control-button fbc-first">
+        <a href="<?= Url::toRoute(['project/update', 'id' => $model->id]) ?>">
+            <p><span>Редактировать</span><i class="fa fa-pencil" aria-hidden="true"></i></p>
+        </a>
+    </div>
+
+<?php
+//Изображения для футера с кнопкой
+$this->registerJs('$(".footerHalf").addClass("footerHalf2")');
+
+$this->endBlock();
+?>
