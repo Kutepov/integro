@@ -1,7 +1,6 @@
-"use strict";
 //Подсветить взаимосвязанные этапы
 $('.outer-circle').mouseover(function () {
-    $('.outer-circle[data-ste   p-id="'+$(this).data('winId')+'"]').css('background', 'green');
+    $('.outer-circle[data-step-id="'+$(this).data('winId')+'"]').css('background', 'green');
     $('.outer-circle[data-step-id="'+$(this).data('loseId')+'"]').css('background', 'red');
 });
 
