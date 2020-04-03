@@ -1,0 +1,538 @@
+.reaDiv, .actDiv {
+    display:none;
+}
+
+.reaClass:hover + .reaDiv {
+    display:block;
+}
+
+.actClass:hover + .actDiv {
+    display:block;
+}
+
+
+div.boxItem {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1em;
+    margin-right: 5em;
+    position:relative
+}
+
+.boxItem:before, .boxItem:after {
+    content:'';
+    width:5em;/* size of your margin */
+    border-bottom:1px solid;
+    position:absolute;
+    top:50%;
+
+}
+:after {
+    left:100%;
+}
+:before {
+    right:100%;
+}
+.boxItem:first-of-type:before, .boxItem:last-of-type:after {
+    display:none;
+}
+.myBox {
+    white-space:nowrap;
+    /*text-align:center;*/
+}
+
+.outer-circle {
+    position:relative;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.inner-circle {
+    position:absolute;
+    background: #8bb85c;
+    border-radius: 50%;
+    right: 30%;
+    left: 30%;
+    top: 30%;
+    bottom: 30%;
+    cursor: pointer;
+    /* no margin, no width, they get automatically calculated*/
+}
+
+.circle-s {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+.circle-m {
+    width: 1.875em;
+    height: 1.875em;
+}
+
+.circle-m .inner-circle {
+    border-radius: 50%;
+    right: 20%;
+    left: 20%;
+    top: 20%;
+    bottom: 20%;
+}
+
+.arcticmodal-overlay {
+    opacity: 0!important;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+.input-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+    padding: 10px;
+    min-width: 1.25em;
+    padding-right: 0;
+    text-align: center;
+}
+
+
+.example-3{
+    box-sizing:border-box;
+}
+.example-3{
+    position:relative; width: 3.125em;
+}
+.example-3 h2{
+    font-weight:400
+}
+.example-3 .filupp > input[type="file"]{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0
+}
+.example-3 .filupp{position:relative;display:block;padding:1em;cursor:pointer;}
+.example-3 .filupp-file-name{display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal}
+
+.dstp {
+    display: none;
+}
+
+.fa-trash, .fa-download {
+    padding-left: 1.25em;
+    color: #2f475b;
+    opacity: 0.2;
+}
+
+/*.elMot::-webkit-scrollbar { width: 0 ! important }*/
+
+.elMot {
+    height: 29.5em;
+    overflow: scroll;
+    /*overflow-y: hidden;*/
+    margin-bottom: 1.25em;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+    background-color: #fff!important;
+    border: none!important;
+    cursor: default;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff!important;
+    border: none!important;
+    outline: none;
+}
+
+.custom-fa input[type="checkbox"] {
+    position:absolute;left:-999px;
+}
+.custom-fa input[type="checkbox"]:focus {
+    color:#46c0ef;
+}
+.custom-fa label{
+    cursor: pointer;
+}
+.custom-fa label input[type="checkbox"] + span:before {
+    font-family: FontAwesome;
+    content: "\f096";
+    display: inline-block;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+    text-align:center;
+    letter-spacing: 6px;
+}
+.custom-fa label input[type="checkbox"]:checked + span:before {
+    content: "\f046";
+    letter-spacing: 3px;
+    /*color:#fff;*/
+
+} /* checked icon */
+.custom-fa label input[type="checkbox"]:indeterminate + span:before{
+    content: "\f147";letter-spacing: 6px;
+}
+
+.nameStep-flexdatalist {
+    width: 34.375em; font-family: FSRAIL55; font-size: 1em; display: inline-block; padding: 0.625em; padding-left: 0.3125em; outline: none; border: none; border-radius: 0.625em;
+}
+
+.flexdatalist-results, .flexdatalist-results li {
+    border: none;
+}
+
+.deletedFile {
+    display: none;
+}
+
+.arcticmodal-container td {
+    padding-top: 0px;
+    display: block;
+}
+
+.arcticmodal-container {
+    position: absolute; margin: 0;    overflow: hidden;     height: 100%;
+}
+
+.arcticmodal-container_i {
+    margin: 0 !important;    /*overflow: hidden;*/
+}
+
+.nowClass {
+    background: grey;
+}
+
+.winClass {
+    background: green;
+}
+
+.loseClass {
+    background: red;
+}
+
+/* Tooltip container */
+.tooltip-1 {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip-1 .tooltiptext-1 {
+    visibility: hidden;
+    position: absolute;
+    width: 30em;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip-1 .tooltiptext-1::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    left: -5%!important;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-1:hover .tooltiptext-1 {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Tooltip container */
+.tooltip-2 {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip-2 .tooltiptext-2 {
+    visibility: hidden;
+    position: absolute;
+    /*min-width: 2em;*/
+    width: 30em;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltiptext-1 {
+    top: -5px;
+    left: 125%;
+}
+
+.tooltiptext-2 {
+    top: -5px;
+    left: 125%;
+}
+
+/* Tooltip arrow */
+.tooltip-2 .tooltiptext-2::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    left: -50%!important;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-2:hover .tooltiptext-2 {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.step-complete {
+    background: #8bb85c;
+}
+
+.step-in-work {
+    background: #f6cb00;
+}
+
+.step-upcoming {
+    background: #85898d;
+}
+
+.step-uncomplete {
+    background: #db7235;
+}
+
+.road-map-wrapper .overude {
+    color: red;
+}
+
+.steps-overdue-wrapper {
+    margin-bottom: 20px;
+}
+
+.road-map-wrapper .list-statuses {
+    width: 100%;
+    margin-bottom: 1.5625em;
+}
+
+.road-map-wrapper .list-statuses > .list-statuses-title-wrapper {
+    display: inline-block;
+}
+
+.road-map-wrapper .list-statuses > .list-statuses-title-wrapper > .list-statuses-title {
+    color: #2f475b;
+    font-family: RussianRailGRegular;
+    font-size: 1.25em;
+}
+
+.road-map-wrapper .list-statuses .list-statuses-content {
+    float: right;
+    text-align: right;
+    display: inline-block;
+}
+
+.road-map-wrapper .list-statuses .list-statuses-content .list-status-item {
+    display: inline-block;
+}
+
+.road-map-wrapper .list-statuses .list-statuses-content .list-status-item-name {
+    vertical-align: super;
+    font-family: FSRAIL55;
+}
+
+.road-map-wrapper .list-statuses .list-statuses-content .list-status-item-wrapper {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.steps-overdue-wrapper .steps-overdue-title {
+    font-family: FSRAIL75;
+    font-size: 1.125em;
+    color: #2f475b;
+}
+
+.steps-overdue-wrapper .steps-overdue-item {
+    font-family: FSRAIL55;
+    font-size: 0.875em;
+    margin: 0px;
+    white-space: normal;
+}
+
+.road-map-is-not-exists {
+    font-family: FSRAIL75;
+    font-size: 1.125em;
+    color: #2f475b;
+    opacity: 0.4;
+}
+
+.main-step-wrapper {
+    display: inline-block;
+    width: 14.6875em;
+    padding-bottom: 1em;
+    position: relative;
+}
+
+.main-step-wrapper .main-step-title-wrapper {
+    width: 8.3125em;
+    padding-left: 2.5em;
+}
+
+.main-step-wrapper .main-step-title-wrapper > p {
+    font-family: FSRAIL55;
+    font-size: 0.875em;
+    margin: 0px;
+    white-space: normal;
+}
+
+.main-step-dates-wrapper {
+    padding-left: 2.5em;
+    margin-bottom: 0.625em;
+}
+
+.main-step-dates-wrapper > p {
+    font-family: FSRAIL55;
+    font-size: 0.875em;
+    margin: 0px;
+}
+
+.main-step-circle-wrapper {
+    position: relative;
+    padding-left: 1.875em;
+}
+
+.outer-circle-main {
+    display: inline-block;
+    z-index: 5;
+}
+
+.steps-vertical-hr {
+    position: absolute;
+    width: 15.25em;
+    border-bottom: solid 0.0625em;
+    top: 43%;
+    left: 1.875em;
+    z-index: 0;
+}
+
+.substeps-wrapper {
+    position: absolute;
+}
+
+.substep-wrapper-2 {
+    padding-left: 2.1875em;
+    padding-top: 4.5625em;
+    position: relative;
+    margin-top: 8px;
+}
+
+.substep-horizontal-hr {
+    position: absolute;
+    height: 6.125em;
+    border-left: solid 0.05625em;
+    left: 2.8125em;
+    top: -15%;
+    z-index: 0;
+    width: 1px;
+}
+
+.substep-circle-wrapper {
+    width: 7.1875em;
+    position: relative;
+    z-index: 5;
+}
+
+.outer-circle-sub {
+    display: inline-block;
+    z-index: 5;
+}
+
+.substep-circle-wrapper > p {
+    margin-left: 8px;
+    font-family: FSRAIL55;
+    font-size: 0.875em;
+    display: inline-block;
+    position: absolute;
+    top: 10%;
+    width: 14.5em;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-y: auto;
+    max-height: 6.5em;
+}
+
+.outer-circle:hover {
+    background-color: grey;
+}
+
+.short-info-dates {
+    font-size: 0.875em;
+    font-family: FSRAIL55;
+    display: inline-block;
+}
+
+.short-info-close-button {
+    display: inline-block;
+    padding-left: 0.3125em;
+    cursor: pointer;
+}
+
+.short-info-status {
+    margin-top: 0px;font-family: FSRAIL55;
+}
+
+.short-info-title {
+    font-size: 0.875em;
+    font-family: FSRAIL55;
+    color: #acb2b8;
+    margin-top: 10px;
+}
+
+.short-info-link-to-file {
+    font-family: FSRAIL55;
+    font-size: 0.75em;
+}
+
+.short-info-name-file {
+    font-family: FSRAIL55;
+    color: #2f475b;
+}
+
+.short-info-format-file {
+    background: #acb2b8;
+    font-family: FSRAIL55;
+    color: #fff;
+}
+
+.short-info-reasons-wrapper {
+    font-size: 0.875em;
+    font-family: FSRAIL55;
+    color: #acb2b8;
+    margin-top: 10px;
+}
+
+.short-info-reasons-text {
+    font-size: 0.875em;
+    font-family: FSRAIL55;
+    color: #acb2b8;
+}

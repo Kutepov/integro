@@ -15,12 +15,7 @@ $this->registerCssFile('/css/project/description.css');
         <div id="TemplatesR">
             <div>
                 <div>
-                    <div class="project-country-type">
-                        <div class="project-country-flag" style="background: url('/img/countries/<?= $model->country->code ?>.png');"></div>
-                        <p class="project-country-name"><?= $model->country->name ?></p>
-                        <p class="project-type-name"><?= $model->type->name ?></p>
-                    </div>
-                    <p class="project-full-name"><?= $model->full_name ?></p>
+                    <?= $this->render('_title', compact('model')) ?>
                 </div>
                 <div>
                     <div class="project-field-title"><p><?= $model->getAttributeLabel('name') ?></p></div>

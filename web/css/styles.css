@@ -451,7 +451,6 @@ code
 }
 .project-description-wrapper > div {
 	width: 100%;
-	padding-left: 5%;
 	margin: auto;
 }
 
@@ -640,6 +639,7 @@ code
 	display: inline-block;
 	vertical-align: top;
 	min-height: 73vh;
+	padding-left: 20px;
 }
 
 .project-create-custom-field-name-wrapper {
@@ -679,5 +679,4 @@ code
 
 #project-update-form-wrapper {
 	width: 80%;
-	margin-left: 20px;
 }

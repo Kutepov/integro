@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Projects;
 use app\models\ProjectsCustomFields;
 use app\models\ProjectsSearch;
+use app\models\ProjectStepsStatuses;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -54,12 +55,14 @@ class ProjectController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             if ($model->save()) {
-                foreach (Yii::$app->request->post('Projects')['customFields'] as $field) {
-                    $modelField = new ProjectsCustomFields();
-                    $modelField->name = $field['name'];
-                    $modelField->value = $field['value'];
-                    $modelField->project_id = $model->id;
-                    $modelField->save();
+                if (Yii::$app->request->post('Projects')['customFields']) {
+                    foreach (Yii::$app->request->post('Projects')['customFields'] as $field) {
+                        $modelField = new ProjectsCustomFields();
+                        $modelField->name = $field['name'];
+                        $modelField->value = $field['value'];
+                        $modelField->project_id = $model->id;
+                        $modelField->save();
+                    }
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -85,12 +88,14 @@ class ProjectController extends Controller
 
             if ($model->save()) {
                 ProjectsCustomFields::clearByProject($model->id);
-                foreach (Yii::$app->request->post('Projects')['customFields'] as $field) {
-                    $modelField = new ProjectsCustomFields();
-                    $modelField->name = $field['name'];
-                    $modelField->value = $field['value'];
-                    $modelField->project_id = $model->id;
-                    $modelField->save();
+                if (Yii::$app->request->post('Projects')['customFields']) {
+                    foreach (Yii::$app->request->post('Projects')['customFields'] as $field) {
+                        $modelField = new ProjectsCustomFields();
+                        $modelField->name = $field['name'];
+                        $modelField->value = $field['value'];
+                        $modelField->project_id = $model->id;
+                        $modelField->save();
+                    }
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -113,5 +118,22 @@ class ProjectController extends Controller
         }
 
         return $this->render('view', compact('model'));
+    }
+
+    /**
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionRoadMap($id)
+    {
+        $project = Projects::findOne($id);
+        $statuses = ProjectStepsStatuses::find()->orderBy(['id' => SORT_ASC])->all();
+
+        if (!$project) {
+            throw new NotFoundHttpException('Страница не найдена');
+        }
+
+        return $this->render('road-map', compact('project', 'statuses'));
     }
 }

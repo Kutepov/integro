@@ -28,6 +28,9 @@ use yii\helpers\Url;
  * @property Users $manager
  * @property Users $ceo
  * @property ProjectsCustomFields[] $customFields
+ * @property ProjectSteps[] $steps
+ * @property ProjectSteps[] $lateSteps
+ * @property ProjectSteps[] $mainSteps
  */
 class Projects extends \yii\db\ActiveRecord
 {
@@ -141,6 +144,33 @@ class Projects extends \yii\db\ActiveRecord
         return $this->hasMany(ProjectsCustomFields::class, ['project_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSteps()
+    {
+        return $this->hasMany(ProjectSteps::class, ['project_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMainSteps()
+    {
+        return $this->getSteps()->where(['is_substep' => false])->orderBy(['position' => SORT_ASC]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLateSteps()
+    {
+        return $this->getSteps()->where(['<', 'end_at', time()]);
+    }
+
+    /**
+     * @return array
+     */
     public static function getMenu()
     {
         if (Yii::$app->request->get('id') && $project = self::findOne(Yii::$app->request->get('id'))) {
@@ -155,7 +185,7 @@ class Projects extends \yii\db\ActiveRecord
                         'url' => Url::toRoute(['/project/road-map', 'id' => $project->id])
                     ],
                     [
-                        'name' => 'Дорожная карта',
+                        'name' => 'Документы',
                         'url' => Url::toRoute(['/project/documents', 'id' => $project->id])
                     ],
                     [
