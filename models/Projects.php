@@ -58,7 +58,6 @@ class Projects extends \yii\db\ActiveRecord
             [['manager_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['manager_id' => 'id']],
             [['ceo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['ceo_id' => 'id']],
             [['full_name', 'type_id', 'country_id', 'name', 'begin_at', 'end_at'], 'required', 'message' => 'Поле не может быть пустым'],
-            //[['begin_at', 'end_at'], 'safe']
         ];
     }
 
@@ -173,7 +172,16 @@ class Projects extends \yii\db\ActiveRecord
      */
     public static function getMenu()
     {
-        if (Yii::$app->request->get('id') && $project = self::findOne(Yii::$app->request->get('id'))) {
+        $projectId = false;
+        if (Yii::$app->controller->id == 'project' && Yii::$app->request->get('id')) {
+            $projectId = Yii::$app->request->get('id');
+        }
+
+        if (!$projectId) {
+            $projectId = Yii::$app->request->cookies['projectId'];
+        }
+
+        if ($projectId && $project = self::findOne($projectId)) {
             return [
                 'Информация о проекте' => [
                     [

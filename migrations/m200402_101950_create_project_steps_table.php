@@ -15,7 +15,7 @@ class m200402_101950_create_project_steps_table extends Migration
         $this->createTable('{{%project_steps}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(255)->comment('Название'),
-            'start_at' => $this->integer()->comment('Дата начала'),
+            'begin_at' => $this->integer()->comment('Дата начала'),
             'end_at' => $this->integer()->comment('Дата завершения'),
             'is_template' => $this->boolean()->comment('Шаблон'),
             'is_substep' => $this->boolean()->comment('Подэтап'),

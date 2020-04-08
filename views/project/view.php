@@ -62,7 +62,7 @@ $this->registerCssFile('/css/project/description.css');
 <?php $this->beginBlock('control_buttons_page'); ?>
     <div class="footer-control-button fbc-first">
         <a href="<?= Url::toRoute(['project/update', 'id' => $model->id]) ?>">
-            <p><span>Редактировать</span><i class="fa fa-pencil" aria-hidden="true"></i></p>
+            <p><span>Редактировать</span></p>
         </a>
     </div>
 

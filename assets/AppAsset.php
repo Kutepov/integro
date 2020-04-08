@@ -29,6 +29,7 @@ class AppAsset extends AssetBundle
         'css/jquery.ganttView.css',
         'css/all.min.css',
         'css/jquery.flexdatalist.min.css',
+        'css/font-awesome.min.css',
         'css/jquery.arcticmodal-0.3.css',
         'css/lightgallery.min.css',
     ];

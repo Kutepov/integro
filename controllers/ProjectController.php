@@ -10,10 +10,23 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Cookie;
 
 class ProjectController extends Controller
 {
     public $layout = 'project';
+
+    public function beforeAction($action)
+    {
+        if (Yii::$app->request->get('id')) {
+            Yii::$app->response->cookies->add(new Cookie([
+                'name' => 'projectId',
+                'value' => Yii::$app->request->get('id')
+            ]));
+        }
+        return parent::beforeAction($action);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -125,7 +138,7 @@ class ProjectController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionRoadMap($id)
+    public function actionRoadMap($id, $edit = false)
     {
         $project = Projects::findOne($id);
         $statuses = ProjectStepsStatuses::find()->orderBy(['id' => SORT_ASC])->all();
@@ -134,6 +147,7 @@ class ProjectController extends Controller
             throw new NotFoundHttpException('Страница не найдена');
         }
 
-        return $this->render('road-map', compact('project', 'statuses'));
+        $edit = (bool)$edit;
+        return $this->render('road-map', compact('project', 'statuses', 'edit'));
     }
 }

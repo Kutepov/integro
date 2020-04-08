@@ -15,16 +15,17 @@ class ProjectsSearch extends Projects
      */
     public function rules()
     {
-        return [];
+        return [
+            [['country_name'], 'safe']
+        ];
     }
 
     public function search($params)
     {
-        $query = self::find()->with('country')->with('type');
+        $query = self::find()->joinWith('country')->joinWith('type')->orderBy(['countries.name' => SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => false,
             'pagination' => [
                 'pageSize' => 200
             ]

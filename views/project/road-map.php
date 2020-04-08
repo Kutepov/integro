@@ -3,24 +3,28 @@
  * @var $this \yii\web\View
  * @var $project \app\models\Projects
  * @var $statuses \app\models\ProjectStepsStatuses[]
+ * @var $edit boolean
  */
+
+use yii\helpers\Url;
 
 $this->title = 'Дорожная карта';
 
-$this->registerCssFile('/css/roadmap.css');
-$this->registerJsFile('/js/roadmap.js');
+$this->registerCssFile('/css/road-map/roadmap.css');
+$this->registerJsFile('/js/road-map/roadmap.js');
+if (!$edit) {
+    $this->registerJsFile('/js/road-map/short-info.js');
+}
+else {
+    $this->registerJsFile('/js/road-map/edit.js');
+}
 ?>
-<div style="display: none;">
-    <div class="box-modal" id="modalHint" style="background: #fff; position: relative; width: 13.75em; box-shadow: 0 0 10px rgba(0,0,0,0.5); border-radius: 1.25em;">
-        <div id="modalHintBox" style="padding: 1.25em; position: relative;">
-            123434
-        </div>
-    </div>
-</div>
-
 
 <div class="road-map-wrapper">
     <?= $this->render('_title', ['model' => $project]) ?>
+    <?php if ($edit): ?>
+        <div class="alert alert-success">Редактирование <b><a style="float: right;" class="text-success" href="<?= Url::toRoute(['/project/road-map', 'id' => $project->id]) ?>">Завершить <span class="fa fa-check"></span> </a></b></div>
+    <?php endif; ?>
     <hr>
     <div class="list-statuses">
         <div class="list-statuses-title-wrapper"><p class="list-statuses-title">Дорожная карта</p></div>
@@ -47,7 +51,7 @@ $this->registerJsFile('/js/roadmap.js');
                         <?= $item->name.' -> ' ?>
                     <?php endforeach; ?>
                     <?= $step->name ?>:
-                    <span class="overude"><b><?= date('d.m.Y', $step->end_at) ?></b></span>
+                    <span class="overude"><b><?= $step->end_at ?></b></span>
                 </p>
             <?php endforeach; ?>
         </div>
@@ -63,37 +67,98 @@ $this->registerJsFile('/js/roadmap.js');
                         <p><?= $mainStep->name ?></p>
                     </div>
                     <div class="main-step-dates-wrapper">
-                        <p><b><?= date('d.m.Y', $mainStep->start_at) ?> - <br><?= date('d.m.Y', $mainStep->end_at) ?></b></p>
+                        <p><b><?= $mainStep->begin_at ?> - <br><?= $mainStep->end_at ?></b></p>
                     </div>
-                    <div class="main-step-circle-wrapper">
-                        <div
+                    <div class="js-step-hover main-step-circle-wrapper">
+
+                        <?php
+                        //Плюс слева
+                        if ($edit):
+                        ?>
+                            <div class="js-step-create step-create-main-left">
+                                <a href="<?= Url::toRoute(['/project-step/create', 'type' => 'left', 'related_step_id' => $mainStep->id]) ?>">
+                                    <span class="dstp dstp_130"><i class="fas fa-plus"></i></span>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+
+                        <<?= $edit ? 'a' : 'div' ?>
                             data-step-id="<?= $mainStep->id ?>"
                             data-win-id="<?= $mainStep->win_id ?>"
                             data-lose-id="<?= $mainStep->lose_id ?>"
                             class="outer-circle-main outer-circle circle-m"
+                            <?= $edit ? 'href="'.Url::toRoute(['/project-step/edit', 'id' => $mainStep->id]).'"' : 'div' ?>
                         >
                             <div class="inner-circle <?= $mainStep->status->class ?>"></div>
-                        </div>
+                        </<?= $edit ? 'a' : 'div' ?>>
                         <?php if (count($mainSteps) > $index + 1): ?><div class="steps-vertical-hr"></div><?php endif; ?>
+
+
+                        <?php
+                        //Плюс справа
+                        if ($edit):
+                        ?>
+                        <div class="js-step-create step-create-main-right">
+                            <a href="<?= Url::toRoute(['/project-step/create', 'type' => 'right', 'related_step_id' => $mainStep->id]) ?>" >
+                                <span class="dstp dstp_130"><i class="fas fa-plus"></i></span>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php
+                        //Плюс внизу
+                        if ($edit && !$mainStep->getChain('child')):
+                        ?>
+                            <div class="steps-small-horizontal-hr"></div>
+                            <a class="js-step-create step-create-first-child" href="<?= Url::toRoute(['/project-step/create', 'type' => 'child', 'related_step_id' => $mainStep->id]) ?>">
+                                <span class="dstp dstp_130"><i class="fas fa-plus"></i></span>
+                            </a>
+                        <?php endif; ?>
                     </div>
 
                     <?php if ($children = $mainStep->getChain('child')): ?>
                         <div class="substeps-wrapper">
                             <?php foreach ($children as $subStep): ?>
                                 <div>
-                                    <div class="substep-wrapper-2">
+                                    <div class="js-step-hover substep-wrapper-2">
+
                                         <div class="substep-horizontal-hr"></div>
+
+                                        <?php
+                                        //Плюс снизу
+                                        if ($edit):
+                                            ?>
+                                            <div class="js-step-create step-create-sub-bottom">
+                                                <a href="<?= Url::toRoute(['/project-step/create', 'type' => 'bottom', 'related_step_id' => $subStep->id]) ?>">
+                                                    <span class="dstp dstp_114"><i class="fas fa-plus"></i></span>
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+
                                         <div class="substep-circle-wrapper">
-                                            <div
+                                            <<?= $edit ? 'a' : 'div' ?>
                                                 data-step-id="<?= $subStep->id ?>"
                                                 data-win-id="<?= $subStep->win_id ?>"
                                                 data-lose-id="<?= $subStep->lose_id ?>"
                                                 class="outer-circle-sub outer-circle circle-s"
+                                                <?= $edit ? 'href="'.Url::toRoute(['/project-step/edit', 'id' => $subStep->id]).'"' : 'div' ?>
                                             >
                                                 <div class="inner-circle <?= $subStep->status->class ?>"></div>
-                                            </div>
+                                            </<?= $edit ? 'a' : 'div' ?>>
                                             <p><?= $subStep->name ?></p>
                                         </div>
+
+                                        <?php
+                                        //Плюс сверху
+                                        if ($edit):
+                                        ?>
+                                            <div class="js-step-create step-create-sub-top">
+                                                <a href="<?= Url::toRoute(['/project-step/create', 'type' => 'top', 'related_step_id' => $subStep->id]) ?>">
+                                                    <span class="dstp dstp_114"><i class="fas fa-plus"></i></span>
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -104,3 +169,26 @@ $this->registerJsFile('/js/roadmap.js');
         <?php endif; ?>
     </div>
 </div>
+
+
+<div style="display: none;">
+    <div class="box-modal" id="modalHint">
+        <div id="modalHintBox"></div>
+    </div>
+</div>
+
+
+<?php if (!$edit): ?>
+<?php $this->beginBlock('control_buttons_page'); ?>
+    <div class="footer-control-button fbc-first">
+        <a href="<?= $mainSteps ? Url::toRoute(['/project/road-map', 'id' => $project->id, 'edit' => 'true']) : Url::toRoute(['/project-step/create']) ?>">
+            <p><span><?= $mainSteps ? 'Редактировать' : 'Создать' ?></span></p>
+        </a>
+    </div>
+<?php
+//Изображения для футера с кнопкой
+$this->registerJs('$(".footerHalf").addClass("footerHalf2")');
+
+$this->endBlock();
+endif;
+?>

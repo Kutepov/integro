@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "project_steps_documents".
@@ -73,6 +75,32 @@ class ProjectStepsDocuments extends \yii\db\ActiveRecord
     public function getType()
     {
         return $this->hasOne(ProjectStepsDocumentsTypes::class, ['id' => 'type_id']);
+    }
+
+    /**
+     * @param UploadedFile $file
+     * @param int $stepId
+     * @param int $typeId
+     * @param string $path
+     * @return bool
+     */
+    public static function saveItem(UploadedFile $file, int $stepId, int $typeId, string $path): bool
+    {
+        $doc = new self();
+        $doc->path = $path;
+        $doc->name = $file->baseName;
+        $doc->type_id = $typeId;
+        $doc->extension = $file->extension;
+        $doc->project_step_id = $stepId;
+        return $doc->save();
+    }
+
+    public function delete()
+    {
+        if (FileHelper::unlink(Yii::getAlias('@webroot').$this->path)) {
+            return parent::delete();
+        }
+        return false;
     }
 
 }

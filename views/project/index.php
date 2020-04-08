@@ -19,7 +19,8 @@ echo \yii\grid\GridView::widget([
             'value' => function ($model) {
                 /** @var \app\models\Projects $model */
                 return $model->country->name;
-            }
+            },
+            'enableSorting' => false
         ],
         [
             'attribute' => 'name',
@@ -30,7 +31,8 @@ echo \yii\grid\GridView::widget([
             'value' => function ($model) {
                 /** @var \app\models\Projects $model */
                 return $model->type->name;
-            }
+            },
+            'enableSorting' => false
         ],
         [
             'format' => 'raw',
@@ -48,7 +50,7 @@ Pjax::end();
 $this->beginBlock('control_buttons_page'); ?>
 <div class="footer-control-button fbc-first">
     <a href="<?= Url::toRoute('/') ?>">
-        <p><span>Карта</span><i class="fa fa-pencil" aria-hidden="true"></i></p>
+        <p><span>Карта</span></p>
     </a>
 </div>
 

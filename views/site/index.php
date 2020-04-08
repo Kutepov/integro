@@ -18,12 +18,12 @@ $this->title = 'Зарубежные проекты';
 <?php $this->beginBlock('control_buttons_page'); ?>
 <div class="footer-control-button fbc-second"">
     <a href="<?= Url::toRoute('project/index') ?>">
-        <p><span>Список проектов</span><i class="fa fa-pencil" aria-hidden="true"></i></p>
+        <p><span>Список проектов</span></p>
     </a>
 </div>
 <div class="footer-control-button fbc-first">
     <a href="<?= Url::toRoute('project/create') ?>">
-        <p><span>Добавить проект</span><i class="fa fa-pencil" aria-hidden="true"></i></p>
+        <p><span>Добавить проект</span></p>
     </a>
 </div>
 

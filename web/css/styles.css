@@ -149,7 +149,9 @@ code
 }
 
 .asdsdads {
-	box-shadow: 0 0 0.625em rgba(0,0,0,0.5); border-radius: 0.625em; font-family: FSRAIL55; font-size: 1em; display: inline-block; outline: none; border: none; padding-left: 0.625em; height: 3.125em; 
+	box-shadow: 0 0 0.625em rgba(0,0,0,0.5) !important;
+	-webkit-box-shadow: 0 0 0.625em rgba(0,0,0,0.5) !important;
+	border-radius: 0.625em; font-family: FSRAIL55; font-size: 1em; display: inline-block; outline: none; border: none; padding-left: 0.625em; height: 3.125em;
 	text-align: center; padding-left: 0.625em; margin-block-start: 1em; margin-block-end: 1em; vertical-align: bottom;
 }
 
@@ -181,7 +183,7 @@ code
 	color: #2f475b;
     font-family: RussianRailGRegular;
     font-size: 0.875em;
-    width: 90%;
+    width: 100%;
     outline: none;
     border: none;
     vertical-align: middle;
@@ -679,4 +681,245 @@ code
 
 #project-update-form-wrapper {
 	width: 80%;
+}
+
+.create-step-form-wrapper {
+	color: #2f475b;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.create-step-form-wrapper-2 {
+	width: 100%;
+	margin: auto;
+}
+
+.create-step-form-title {
+	color: #2f475b;
+	font-family: FSRAIL75;
+	font-size: 1.125em;
+	display: inline-block;
+}
+
+.create-step-form-close p {
+	color: #2f475b;
+	font-family: FSRAIL75;
+	font-size: 1em;
+	display: inline-block;
+	margin-left: 10%;
+	cursor: pointer;
+	width: 250px;
+	float: right;
+}
+
+.project-step-create-item-wrapper {
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+}
+
+.project-step-create-label-wrapper {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	display: inline-block;
+	width: 175px;
+}
+
+.addProjectStepInputName {
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.5);
+	border-radius: 0.625em;
+	padding-left: 1.875em;
+	display: inline-block;
+	position: relative;
+}
+
+.project-step-create-icon-search {
+	position: absolute;
+	top: 3px;
+	left: 4px;
+}
+
+.ssse {
+	position: relative;
+	padding-bottom: 2em;
+}
+
+.project-step-create-label-start-end-wrapper {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	display: inline-block;
+	width: 175px;
+	vertical-align: text-bottom;
+}
+
+.field-stepform-begin .help-block {
+	position: absolute;
+}
+
+.project-step-create-end-at {
+	display: inline-block;
+	margin-left: 30px;
+}
+
+.project-step-create-begin-at {
+	display: inline-block;
+}
+
+.project-step-create-label-status-wrapper {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	display: inline-block;
+	width: 175px;
+	vertical-align: top;
+}
+
+.project-step-create-label-docs-1-wrapper {
+	color: #2f475b;
+	font-family: FSRAIL75;
+	font-size: 1em;
+}
+
+.project-step-create-docs-1 {
+	font-family: FSRAIL55;
+	font-size: 1em;
+}
+
+.create-step-form-file {
+	font-family: FSRAIL55;
+	color: #2f475b;
+}
+
+.create-step-form-related-steps-title {
+	color: #2f475b;
+	font-family: FSRAIL75;
+	font-size: 1em;
+}
+
+.create-step-form-related-steps-descr {
+	color: #acb2b8;
+	font-family: FSRAIL55;
+	font-size: 0.875em;
+}
+
+.create-step-form-win-step-wrapper {
+	float: left;
+}
+
+.create-step-form-lose-step-wrapper {
+	float: right;
+}
+
+.create-step-form-win-step-title {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+
+.create-step-form-win-step-checkbox-wrapper {
+	color: #8bb85c;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	margin-top: 0;
+}
+
+.create-step-form-that-start {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	margin-bottom: 1.5em;
+}
+
+.create-step-form-that-start-wrapper {
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.5);
+	border-radius: 0.625em;
+	padding-left: 0.625em;
+	width: 24.375em;
+	display: inline-block;
+}
+
+.create-step-form-lose-step-checkbox-wrapper {
+	color: #db7235;
+	font-family: FSRAIL55;
+	font-size: 1em;
+	margin-top: 0;
+
+}
+
+.field-projectsteps-win_id {
+	width: 90% !important;
+}
+
+.field-projectsteps-lose_id {
+	width: 90% !important;
+}
+
+.step-create-template-description {
+	font-size: 0.875em;
+	color: #acb2b8;
+	margin: 0;
+	font-family: FSRAIL55;
+}
+
+.create-step-form-template-checkbox-wrapper {
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: top;
+	padding-left: 1.5625em;
+}
+
+.create-step-form-check-wrap {
+	padding-top: 55px;
+	height: 130px;
+}
+
+.create-step-form-template-checkbox {
+	font-size: 1em;
+	color: #2f475b;
+	margin: 0;
+	font-family: FSRAIL55;
+}
+
+.field-projectsteps-is_template {
+	margin-bottom: 0 !important;
+}
+
+.create-step-form-template-checkbox-wrapper .help-block {
+	margin: 0;
+}
+
+.project-step-create-textarea-wrapper > p {
+	color: #2f475b;
+	font-family: FSRAIL55;
+	font-size: 0.875em;
+	display: inline-block;
+}
+
+.create-step-form-btn-delete-step {
+	vertical-align: top;
+	background: #fff;
+	margin-left: 1.25em;
+	width: 9.375em;
+	cursor: pointer;
+	border: solid #d03a27;
+	border-radius: 0.3125em;
+	height: 2.8125em;
+	color: #d03a27;
+	font-size: 1em;
+	font-family: RussianRailGRegular;
+	display: inline-block;
+	text-align: center;
+	padding-top: 8px;
+}
+
+.create-step-form-btn-delete-step:hover {
+	text-decoration: none;
+	color: #d03a27;
+}
+
+.create-step-form-btn-delete-step:focus {
+	text-decoration: none;
+	color: #d03a27;
 }
