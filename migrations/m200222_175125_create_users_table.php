@@ -34,8 +34,9 @@ class m200222_175125_create_users_table extends Migration
 
         $this->insert('{{%users}}', [
             'username' => 'admin',
-            'email' => 'admin@int.org',
-            'password' => Yii::$app->security->generatePasswordHash('admin')
+            'email' => 'admin@integro.local',
+            'password' => Yii::$app->security->generatePasswordHash('admin'),
+            'full_name' => 'Администратор'
         ]);
     }
 
