@@ -148,7 +148,7 @@ class ProjectController extends BaseController
         }
 
         $edit = (bool)$edit;
-        return $this->render('road-map', compact('project', 'statuses', 'edit'));
+        return $this->render('road-map\index', compact('project', 'statuses', 'edit'));
     }
 
     /**
@@ -164,6 +164,6 @@ class ProjectController extends BaseController
             throw new NotFoundHttpException('Страница не найдена');
         }
 
-        return $this->render('documents', compact('project'));
+        return $this->render('documents\index', compact('project'));
     }
 }

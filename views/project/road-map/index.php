@@ -21,7 +21,7 @@ else {
 ?>
 
 <div class="road-map-wrapper">
-    <?= $this->render('_title', ['model' => $project]) ?>
+    <?= $this->render('/project/_title', ['model' => $project]) ?>
     <?php if ($edit): ?>
         <div class="alert alert-success">Редактирование <b><a style="float: right;" class="text-success" href="<?= Url::toRoute(['/project/road-map', 'id' => $project->id]) ?>">Завершить <span class="fa fa-check"></span> </a></b></div>
     <?php endif; ?>

@@ -195,7 +195,7 @@ $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
     <?php endif; ?>
 
     <div class="create-step-form-check-wrap">
-        <button type="submit" class="redbtn">Создать</button>
+        <button type="submit" class="redbtn"><?= $model->isNewRecord ? 'Создать' : 'Сохранить'?></button>
         <div class="create-step-form-template-checkbox-wrapper">
             <?= $form->field($model, 'is_template')->checkbox() ?>
             <p class="step-create-template-description">В шаблоне сохранятся Название и <br>Нормативные документы копия</p>
