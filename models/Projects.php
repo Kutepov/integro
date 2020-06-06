@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 use yii\helpers\Url;
 
 /**
@@ -31,6 +32,8 @@ use yii\helpers\Url;
  * @property ProjectSteps[] $steps
  * @property ProjectSteps[] $lateSteps
  * @property ProjectSteps[] $mainSteps
+ * @property DocumentsFolders[] $rootFolders
+ * @property DocumentsFolders[] $allFolders
  */
 class Projects extends \yii\db\ActiveRecord
 {
@@ -86,7 +89,7 @@ class Projects extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Country]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCountry()
     {
@@ -96,7 +99,7 @@ class Projects extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Agreement]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getAgreement()
     {
@@ -104,9 +107,29 @@ class Projects extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[DocumentsFolders]]
+     *
+     * @return ActiveQuery
+     */
+    public function getAllFolders()
+    {
+        return $this->hasMany(DocumentsFolders::class, ['project_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[DocumentsFolders]]
+     *
+     * @return ActiveQuery
+     */
+    public function getRootFolders()
+    {
+        return $this->hasMany(DocumentsFolders::class, ['project_id' => 'id'])->where(['parent_folder_id' => null])->orderBy(['id' => SORT_ASC]);
+    }
+
+    /**
      * Gets query for [[Type]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getType()
     {
@@ -116,7 +139,7 @@ class Projects extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Manager]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getManager()
     {
@@ -126,7 +149,7 @@ class Projects extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Ceo]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCeo()
     {
@@ -136,7 +159,7 @@ class Projects extends \yii\db\ActiveRecord
     /**
      * Gets query for [[ProjectsCustomFields]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCustomFields()
     {
@@ -144,7 +167,7 @@ class Projects extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getSteps()
     {
@@ -152,7 +175,7 @@ class Projects extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getMainSteps()
     {
@@ -160,7 +183,7 @@ class Projects extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getLateSteps()
     {

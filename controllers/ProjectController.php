@@ -2,17 +2,17 @@
 
 namespace app\controllers;
 
+use app\models\DocumentsFolders;
 use app\models\Projects;
 use app\models\ProjectsCustomFields;
 use app\models\ProjectsSearch;
 use app\models\ProjectStepsStatuses;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Cookie;
 
-class ProjectController extends Controller
+class ProjectController extends BaseController
 {
     public $layout = 'project';
 
@@ -149,5 +149,21 @@ class ProjectController extends Controller
 
         $edit = (bool)$edit;
         return $this->render('road-map', compact('project', 'statuses', 'edit'));
+    }
+
+    /**
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionDocuments($id)
+    {
+        $project = Projects::findOne($id);
+
+        if (!$project) {
+            throw new NotFoundHttpException('Страница не найдена');
+        }
+
+        return $this->render('documents', compact('project'));
     }
 }

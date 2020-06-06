@@ -923,3 +923,58 @@ code
 	text-decoration: none;
 	color: #d03a27;
 }
+
+.js-documents-folder:hover {
+	cursor: pointer;
+}
+
+.js-documents-controls {
+	opacity: 0.3;
+}
+
+.js-documents-controls:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.documents-indent {
+	margin-left: 2em;
+}
+
+.documents-file:hover {
+	cursor: pointer;
+}
+
+.documents-input-text {
+	display: inline-block;
+	width: 220px;
+}
+
+.documents-input-file {
+	display: inline-block !important;
+	width: 300px;
+}
+
+.js-documents-create-folder {
+	display: inline-block;
+}
+
+.js-documents-edit-folder {
+	display: inline-block;
+}
+
+.documents-file-extension {
+	background: #acb2b8;
+	font-family: FSRAIL55;
+	color: #fff;
+}
+
+.documents-help-block-add-file {
+	font-size: 12px;
+	margin: 0;
+}
+
+.documents-help-block-add-file > ul {
+	margin: 0;
+	padding: 15px;
+}

@@ -95,6 +95,11 @@ class ProjectStepsDocuments extends \yii\db\ActiveRecord
         return $doc->save();
     }
 
+    /**
+     * @return false|int
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function delete()
     {
         if (FileHelper::unlink(Yii::getAlias('@webroot').$this->path)) {

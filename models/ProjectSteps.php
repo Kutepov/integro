@@ -29,17 +29,17 @@ use yii\web\UploadedFile;
  * @property int|null $updated_at Обновлен
  * @property int|null $created_by Создал
  * @property int|null $updated_by Изменил
- * @property int|null $project_id Изменил
+ * @property int|null $project_id Проект
  * @property int $position
  * @property array $arrForDropdown
- * @property UploadedFile[] $docs1
- * @property UploadedFile[] $docs2
  * @property array $exclude_files1
  * @property array $exclude_files2
  *
  * @property array $template_docs1
  * @property array $template_docs2
  *
+ * @property UploadedFile[] $docs1
+ * @property UploadedFile[] $docs2
  * @property ProjectSteps $parent
  * @property ProjectSteps $child
  * @property ProjectSteps $win

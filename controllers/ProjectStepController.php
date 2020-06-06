@@ -2,28 +2,19 @@
 
 namespace app\controllers;
 
-use app\models\Projects;
 use app\models\ProjectSteps;
 use app\models\ProjectStepsDocuments;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\FileHelper;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use \app\models\ProjectStepsDocumentsTypes;
 
-class ProjectStepController extends Controller
+class ProjectStepController extends BaseController
 {
     public $layout = 'project';
-    private $project;
-
-    public function __construct($id, $module, $config = [])
-    {
-        $this->project = Yii::$app->request->cookies['projectId'] ? Projects::findOne(Yii::$app->request->cookies['projectId']) : false;
-        parent::__construct($id, $module, $config);
-    }
 
     /**
      * {@inheritdoc}
@@ -60,6 +51,11 @@ class ProjectStepController extends Controller
         return $this->renderAjax('short-info', compact('model', 'docTypes'));
     }
 
+    /**
+     * @param string $type
+     * @param null $related_step_id
+     * @return string|Response
+     */
     public function actionCreate($type = 'default', $related_step_id = null)
     {
         $model = new ProjectSteps();
@@ -81,6 +77,11 @@ class ProjectStepController extends Controller
         return $this->render('create', compact('model', 'project'));
     }
 
+    /**
+     * @param $id
+     * @return string|Response
+     * @throws NotFoundHttpException
+     */
     public function actionEdit($id)
     {
         $model = ProjectSteps::findOne($id);
@@ -164,6 +165,13 @@ class ProjectStepController extends Controller
         ];
     }
 
+    /**
+     * @param $id
+     * @return Response
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function actionDelete($id)
     {
         $model = ProjectSteps::findOne($id);

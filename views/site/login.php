@@ -1,4 +1,8 @@
 <?php
+/**
+ * @var $model \app\models\forms\LoginForm
+ */
+
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 $this->title = 'Авторизация';
