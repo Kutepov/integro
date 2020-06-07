@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\helpers\Url;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "projects".
@@ -34,8 +35,9 @@ use yii\helpers\Url;
  * @property ProjectSteps[] $mainSteps
  * @property DocumentsFolders[] $rootFolders
  * @property DocumentsFolders[] $allFolders
+ * @property Gallery $gallery
  */
-class Projects extends \yii\db\ActiveRecord
+class Projects extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -188,6 +190,14 @@ class Projects extends \yii\db\ActiveRecord
     public function getLateSteps()
     {
         return $this->getSteps()->where(['<', 'end_at', time()]);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getGallery()
+    {
+        return $this->hasMany(Gallery::class, ['project_id' => 'id'])->orderBy(['id' => SORT_DESC]);
     }
 
     /**

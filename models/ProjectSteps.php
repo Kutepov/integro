@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\models\scopes\ProjectStepControllerQuery;
+use app\models\scopes\ProjectStepsQuery;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -69,7 +69,7 @@ class ProjectSteps extends \yii\db\ActiveRecord
 
     public static function find()
     {
-        return new ProjectStepControllerQuery(get_called_class());
+        return new ProjectStepsQuery(get_called_class());
     }
 
     public function behaviors()

@@ -2,20 +2,20 @@
 
 namespace app\controllers;
 
-use app\models\Documents;
-use app\models\DocumentsFolders;
+use app\models\Gallery;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class DocumentsController extends BaseController
+class GalleryController extends BaseController
 {
     public function beforeAction($action)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        if (!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax && Yii::$app->controller->action->id != 'create') {
             throw new BadRequestHttpException('Only ajax request');
         }
         return parent::beforeAction($action);
@@ -40,31 +40,15 @@ class DocumentsController extends BaseController
     }
 
     /**
-     * @return array
-     * @throws BadRequestHttpException
-     */
-    public function actionCreateFolder()
-    {
-        $model = new DocumentsFolders();
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-            return $this->returnData('Success');
-        }
-
-        Yii::$app->response->statusCode = 400;
-        return $this->returnData('Success', $model->getErrors());
-    }
-
-    /**
-     * @return array
+     * @return array|Response
      * @throws \yii\base\Exception
      */
-    public function actionDocumentUpload()
+    public function actionCreate()
     {
-        $model = new Documents();
-
+        $model = new Gallery();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->save() && $model->upload()) {
-                return $this->returnData();
+                return $this->redirect(Url::to(['/project/gallery', 'id' => $model->project_id, 'edit' => 'true']));
             }
         }
 
@@ -77,9 +61,9 @@ class DocumentsController extends BaseController
      * @return array
      * @throws NotFoundHttpException
      */
-    public function actionEdit($object)
+    public function actionEdit()
     {
-        $model = $this->loadModel($object);
+        $model = $this->loadModel();
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             return $this->returnData('Success');
         }
@@ -95,9 +79,9 @@ class DocumentsController extends BaseController
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
      */
-    public function actionDelete($object)
+    public function actionDelete()
     {
-        $model = $this->loadModel($object);
+        $model = $this->loadModel();
         if ($model->delete()) {
             return $this->returnData('Success');
         }
@@ -119,14 +103,14 @@ class DocumentsController extends BaseController
 
     /**
      * @param $object
-     * @return Documents|DocumentsFolders
+     * @return Gallery
      * @throws NotFoundHttpException
      */
-    private function loadModel($object)
+    private function loadModel()
     {
-        $id = Yii::$app->request->post($object)['id'];
-        $object = 'app\models\\'.$object;
-        $model = $object::findOne($id);
+
+        $id = Yii::$app->request->post('Gallery')['id'];
+        $model = Gallery::findOne($id);
         if (!$model) {
             throw new NotFoundHttpException('Object not found');
         }

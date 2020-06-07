@@ -978,3 +978,24 @@ code
 	margin: 0;
 	padding: 15px;
 }
+
+.gallery-finish-edit-link {
+	float: right;
+	font-weight: bold;
+}
+
+.gallery-upload-file-btn {
+	margin-top: 26px;
+}
+
+.gasllery-item-wrapper {
+	margin: 10px;
+}
+
+.gallery-item-a {
+	text-decoration: none;
+}
+
+.action-item:hover {
+	cursor: pointer;
+}

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DocumentsFolders;
+use app\models\Gallery;
 use app\models\Projects;
 use app\models\ProjectsCustomFields;
 use app\models\ProjectsSearch;
@@ -165,5 +166,24 @@ class ProjectController extends BaseController
         }
 
         return $this->render('documents\index', compact('project'));
+    }
+
+    /**
+     * @param $id
+     * @param false $edit
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionGallery($id, $edit = false)
+    {
+        $project = Projects::findOne($id);
+        $gallery = new Gallery();
+        $edit = (bool)$edit;
+
+        if (!$project) {
+            throw new NotFoundHttpException('Страница не найдена');
+        }
+
+        return $this->render('gallery\index', compact('project', 'edit', 'gallery'));
     }
 }

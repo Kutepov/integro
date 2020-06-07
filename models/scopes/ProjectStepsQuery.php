@@ -9,11 +9,11 @@ use yii\db\ActiveQuery;
  *
  * @see \app\models\ProjectSteps
  */
-class ProjectStepControllerQuery extends ActiveQuery
+class ProjectStepsQuery extends ActiveQuery
 {
     /**
      * @param false $term
-     * @return ProjectStepControllerQuery
+     * @return self
      */
     public function templates($term = false)
     {
